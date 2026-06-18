@@ -130,6 +130,14 @@ const img = btn.querySelector(".music");
 let isPlaying = false;
 
 // Пытаемся запустить музыку при загрузке
+audio
+  .play()
+  .then(() => {
+    isPlaying = true;
+  })
+  .catch(() => {
+    img.data = "./img/off.svg";
+  });
 
 // Управление по клику
 btn.addEventListener("click", () => {
@@ -144,6 +152,19 @@ btn.addEventListener("click", () => {
   }
 });
 
+// Если автовоспроизведение заблокировано - запускаем по первому клику в любом месте
+document.body.addEventListener(
+  "click",
+  function firstClick() {
+    if (!isPlaying && audio.paused) {
+      audio.play();
+      isPlaying = true;
+      img.data = "./img/on.svg";
+    }
+    document.body.removeEventListener("click", firstClick);
+  },
+  { once: true },
+);
 // Если автовоспроизведение заблокировано - запускаем по первому клику в любом месте
 ;
 
