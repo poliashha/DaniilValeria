@@ -130,27 +130,6 @@ const img = btn.querySelector(".music");
 let isPlaying = false;
 
 // Пытаемся запустить музыку при загрузке
-audio
-  .play()
-  .then(() => {
-    isPlaying = true;
-  })
-  .catch(() => {
-    img.data = "./img/off.svg";
-  });
-
-// Управление по клику
-btn.addEventListener("click", () => {
-  if (isPlaying) {
-    audio.pause();
-    isPlaying = false;
-    img.data = "./img/off.svg";
-  } else {
-    audio.play();
-    isPlaying = true;
-    img.data = "./img/on.svg";
-  }
-});
 
 // Если автовоспроизведение заблокировано - запускаем по первому клику в любом месте
 document.body.addEventListener(
