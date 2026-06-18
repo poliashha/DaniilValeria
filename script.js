@@ -131,6 +131,19 @@ let isPlaying = false;
 
 // Пытаемся запустить музыку при загрузке
 
+// Управление по клику
+btn.addEventListener("click", () => {
+  if (isPlaying) {
+    audio.pause();
+    isPlaying = false;
+    img.data = "./img/off.svg";
+  } else {
+    audio.play();
+    isPlaying = true;
+    img.data = "./img/on.svg";
+  }
+});
+
 // Если автовоспроизведение заблокировано - запускаем по первому клику в любом месте
 document.body.addEventListener(
   "click",
